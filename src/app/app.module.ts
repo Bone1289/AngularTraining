@@ -11,7 +11,8 @@ import { CustomerComponent } from './customer/customer.component';
     CustomerComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    NgbModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
