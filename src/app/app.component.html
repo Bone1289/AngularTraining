@@ -1,7 +1,8 @@
 <div class="container" style="padding-left: 0; padding-right: 0;">
   <header class="navbar navbar-light navbar-fixed-top navbar-toggleable-md">
     <button class="navbar-toggler navbar-toggler-right" type="button" (click)="navbarCollapsed = !navbarCollapsed"
-            [attr.aria-expanded]="!navbarCollapsed" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            [attr.aria-expanded]="!navbarCollapsed" aria-controls="navbarContent" aria-expanded="false"
+            aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -16,28 +17,28 @@
           <a class="nav-link">Courses</a>
         </li>
       </ul>
-      <ul class="list-group">
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item list-group-item-success">Dapibus ac facilisis in</li>
-        <li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
-        <li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
-        <li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
-      </ul>
+      <!--<ul class="list-group">-->
+        <!--<li class="list-group-item">Dapibus ac facilisis in</li>-->
+        <!--<li class="list-group-item list-group-item-success">Dapibus ac facilisis in</li>-->
+        <!--<li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>-->
+        <!--<li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>-->
+        <!--<li class="list-group-item list-group-item-danger">Vestibulum at eros</li>-->
+      <!--</ul>-->
 
-      <ul class="list-group">
-        <li class="list-group-item justify-content-between">
-          Cras justo odio
-          <span class="badge badge-default badge-pill">14</span>
-        </li>
-        <li class="list-group-item justify-content-between">
-          Dapibus ac facilisis in
-          <span class="badge badge-default badge-pill">2</span>
-        </li>
-        <li class="list-group-item justify-content-between">
-          Morbi leo risus
-          <span class="badge badge-default badge-pill">1</span>
-        </li>
-      </ul>
+      <!--<ul class="list-group">-->
+        <!--<li class="list-group-item justify-content-between">-->
+          <!--Cras justo odio-->
+          <!--<span class="badge badge-default badge-pill">14</span>-->
+        <!--</li>-->
+        <!--<li class="list-group-item justify-content-between">-->
+          <!--Dapibus ac facilisis in-->
+          <!--<span class="badge badge-default badge-pill">2</span>-->
+        <!--</li>-->
+        <!--<li class="list-group-item justify-content-between">-->
+          <!--Morbi leo risus-->
+          <!--<span class="badge badge-default badge-pill">1</span>-->
+        <!--</li>-->
+      <!--</ul>-->
       <span class="buttons">
         <a href="http://triveratech.com" target="_blank">Trivera Home</a>
         <a href="http://meetings.webex.com" target="_blank">WebEx</a>
@@ -45,20 +46,12 @@
     </div>
   </header>
 
-  <div class="row">
-		<span class="col-md-12">
-      <customer [customerId]="1234"></customer>
-		</span>
-  </div>
-  <div class="row">
-		<span class="col-md-12">
-      <customer [customerId]="1235"></customer>
-		</span>
-  </div>
-  <div class="row">
-		<span class="col-md-12">
-      <customer [customerId]="1236"></customer>
-		</span>
+  <div class="container">
+    <div class="row">
+      <span class="col-md-4" *ngFor="let cust of customers">
+        <customer [customerId]="cust.customerId"></customer>
+      </span>
+    </div>
   </div>
 </div>
 

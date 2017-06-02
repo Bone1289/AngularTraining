@@ -8,16 +8,16 @@ import { Customer } from './Customer';
 })
 export class CustomerComponent implements OnInit {
   @Input()
-  private customerId : number = -1;
-  
-  private static customers : any = {
-    "1234" : new Customer(1234, "Harry", "Potter",  "harry.potter@hogwarts.ac.uk", "+44 0206-931-9185"),  
-    "1235" : new Customer(1235, "Ron", "Weasley","ron.weasley@hogwarts.ac.uk", "+44 0206-931-9381"),
-    "1236" : new Customer(1236, "Hermione", "Granger","hermione.granger@hogwarts.ac.uk", "+44 0206-931-9031")
+  private customerId: number = -1;
+
+  public static customers: any = {
+    '1234': new Customer(1234, 'Harry', 'Potter',  'harry.potter@hogwarts.ac.uk', '+44 0206-931-9185'),
+    '1235': new Customer(1235, 'Ron', 'Weasley', 'ron.weasley@hogwarts.ac.uk', '+44 0206-931-9381'),
+    '1236': new Customer(1236, 'Hermione', 'Granger', 'hermione.granger@hogwarts.ac.uk', '+44 0206-931-9031')
   };
-  
+
   private customer: Customer;
-  
+
   constructor() {
     //this.customer = new Customer(1234, "Harry","Potter","harry.potter@hogwarts.ac.uk", "+44 0206-931-9185");
     this.customer = CustomerComponent.customers[this.customerId];
@@ -26,5 +26,17 @@ export class CustomerComponent implements OnInit {
   ngOnInit() {
     this.customer = CustomerComponent.customers[this.customerId];
   }
+  onClick($event) {
+    console.log(this.customer.firstName + " was clicked!");
+  }
+
+  onHover($event) {
+    console.log(this.customer.firstName + " is being hovered over!");
+  }
+
+  ageInYears() : number {
+    return Math.floor(this.customer.age);
+  }
+
 
 }

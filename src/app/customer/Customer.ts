@@ -7,9 +7,9 @@ export class Customer implements Person{
     private _email: string = '';
     private _phoneNumber: string = '';
     private _birthDate: Date = new Date();
- 
+
     fullName: string = '';
-    
+
     // constructor(public firstName, public midleName, public lastName){
     //     this.firstName = firstName;
     //     this.lastName = lastName;
@@ -17,7 +17,7 @@ export class Customer implements Person{
     //     console.log("Customer was created");
     // }
 
-    constructor(custtomerId:number = -1, firstName:string='', lastName:string= '', 
+    constructor(custtomerId:number = -1, firstName:string='', lastName:string= '',
     email:string = '', phoneNumber:string = ''){
         this._customerID = custtomerId;
         this._firstName = firstName;
@@ -29,7 +29,7 @@ export class Customer implements Person{
     get customerId(): number {
         return this._customerID;
     }
-    
+
     set customerId( customerId: number){
         this._customerID = customerId;
     }
@@ -57,12 +57,17 @@ export class Customer implements Person{
     set phoneNumber( phoneNumber : string) {
         this._phoneNumber = phoneNumber;
     }
-    
+
     get birthDate() : Date {
         return this._birthDate;
     }
     set birthDate( birthDate : Date) {
         this._birthDate = birthDate;
     }
+
+  public get age( ) {
+    let now: Date = new Date( );
+    return ((now.getTime( ) - this.birthDate.getTime( )) / (1000 * 3600 * 24 * 365.25));
+  }
 }
 

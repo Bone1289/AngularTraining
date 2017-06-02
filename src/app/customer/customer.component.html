@@ -1,8 +1,18 @@
-<hr>
-<div>
-  Customer ID: {{ customer.customerId }}<br>
-  First Name: {{ customer.firstName }}<br>
-  Last Name: {{ customer.lastName }}<br>
-  Phone Number: {{ customer.phoneNumber }}<br>
-  Email: {{ customer.email }}
+<div [class.underAge]="customer.age < 17"
+     [class.overAge]="customer.age >= 17"
+     (click)="onClick($event)" (mouseover)="onHover($event)">
+  <div class="row">
+      <span class="col-md-12">Customer ID: {{ customer.customerId }}</span>
+      <span class="col-md-12">First Name: {{ customer.firstName }}</span>
+      <span class="col-md-12">Last Name: {{ customer.lastName }}</span>
+      <span class="col-md-12">Phone Number: {{ customer.phoneNumber }}</span>
+      <span class="col-md-12">Email: {{ customer.email }}</span>12
+      <span class="col-md-12">Birth Date:</span>
+      <span class="col-md-12">{{ customer.birthDate |  date:'yyyy-MM-dd' }}</span>
+      <span class="col-md-12">Age: {{  ageInYears()  | number:'1.0-0' }}yrs, {{ (customer.age% 1 * 12) | number:'1.0-0'}}mos
+</span>
+      <span class="col-md-12" *ngIf="customer.age >= 17">This customer is an adult in the community</span>
+      <span class="col-md-12" *ngIf="customer.age < 17">This customer is NOT an adult in the community</span>
+  </div>
 </div>
+
