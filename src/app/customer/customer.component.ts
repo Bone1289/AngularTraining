@@ -15,28 +15,55 @@ export class CustomerComponent implements OnInit {
     '1235': new Customer(1235, 'Ron', 'Weasley', 'ron.weasley@hogwarts.ac.uk', '+44 0206-931-9381'),
     '1236': new Customer(1236, 'Hermione', 'Granger', 'hermione.granger@hogwarts.ac.uk', '+44 0206-931-9031')
   };
-
+  private state = 'view';
   private customer: Customer;
 
   constructor() {
     //this.customer = new Customer(1234, "Harry","Potter","harry.potter@hogwarts.ac.uk", "+44 0206-931-9185");
-    this.customer = CustomerComponent.customers[this.customerId];
+    // this.customer = CustomerComponent.customers[this.customerId];
  }
 
   ngOnInit() {
     this.customer = CustomerComponent.customers[this.customerId];
   }
   onClick($event) {
-    console.log(this.customer.firstName + " was clicked!");
+    console.log(this.customer.firstName + ' was clicked!');
   }
 
   onHover($event) {
-    console.log(this.customer.firstName + " is being hovered over!");
+    // console.log(this.customer.firstName + ' is being hovered over!');
   }
 
-  ageInYears() : number {
+  ageInYears(): number {
     return Math.floor(this.customer.age);
   }
+  update() {
+    this.state = 'view';
+  }
 
+  bdChange(o, $event) {
+    console.log('BD Change');
+    console.log(o);
+    // debugger;
+    // let bd : any = this.customer.birthDate;
+    const bd: any = $event;
 
+    if (((typeof bd === 'object') && (bd.getUTCDate))) {
+      this.customer.birthDate = new Date(bd.getYear(), bd.getMonth() - 1, bd.getDay());
+      return;
+    }
+    else   // Assume a yyyy-mm-dd format
+    if (typeof bd == 'string') {
+      const inStr = bd.toString();
+      const year = inStr.substring(0, 4);
+      const month = inStr.substring(5, 7);
+      const day = inStr.substring(8, 10);
+
+      this.customer.birthDate = new Date(parseInt(year, 10), parseInt(month, 10) - 1, parseInt(day, 10));
+    } else if ((typeof bd === 'object') && (bd.month)) {
+      this.customer.birthDate = new Date(bd.year, bd.month - 1, bd.day);
+    }
+    console.log(typeof bd);
+    console.log(this.customer.birthDate);
+  }
 }
